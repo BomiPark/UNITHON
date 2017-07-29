@@ -2,23 +2,34 @@ package project.android.unithon.Service;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Toast;
 
-import project.android.unithon.R;
+import com.google.android.gms.maps.model.LatLng;
 
-/**
- * Created by qkrqh on 2017-07-29.
- */
+import project.android.unithon.Model.LatXLngY;
+
+
 
 public class LatticeChangeService {
 
     public static int TO_GRID = 0;
     public static int TO_GPS = 1;
+    public static LatticeChangeService latticeChangeService;
+    public static LatXLngY rs;
 
-    public void setService() {
+    public static LatticeChangeService get(){
+        latticeChangeService = new LatticeChangeService();
+        rs = new LatXLngY();
+        return latticeChangeService;
+    }
+
+    public void setService(LatLng latLng) {
 
         LatXLngY tmp = convertGRID_GPS(TO_GRID, 37.579871128849334, 126.98935225645432);
         LatXLngY tmp2 = convertGRID_GPS(TO_GRID, 35.101148844565955, 129.02478725562108);
         LatXLngY tmp3 = convertGRID_GPS(TO_GRID, 33.500946412305076, 126.54663058817043);
+
+        LatXLngY input = convertGRID_GPS(TO_GRID, latLng.latitude, latLng.longitude);
 
         Log.e(">>", "x = " + tmp.x + ", y = " + tmp.y);
         Log.e(">>", "x = " + tmp2.x + ", y = " + tmp2.y);
@@ -26,7 +37,7 @@ public class LatticeChangeService {
     }
 
 
-    private LatXLngY convertGRID_GPS(int mode, double lat_X, double lng_Y )
+    public LatXLngY convertGRID_GPS(int mode, double lat_X, double lng_Y )
     {
         double RE = 6371.00877; // 지구 반경(km)
         double GRID = 5.0; // 격자 간격(km)
@@ -40,7 +51,6 @@ public class LatticeChangeService {
         //
         // LCC DFS 좌표변환 ( code : "TO_GRID"(위경도->좌표, lat_X:위도,  lng_Y:경도), "TO_GPS"(좌표->위경도,  lat_X:x, lng_Y:y) )
         //
-
 
         double DEGRAD = Math.PI / 180.0;
         double RADDEG = 180.0 / Math.PI;
@@ -57,7 +67,6 @@ public class LatticeChangeService {
         sf = Math.pow(sf, sn) * Math.cos(slat1) / sn;
         double ro = Math.tan(Math.PI * 0.25 + olat * 0.5);
         ro = re * sf / Math.pow(ro, sn);
-        LatXLngY rs = new LatXLngY();
 
         if (mode == TO_GRID) {
             rs.lat = lat_X;
@@ -100,18 +109,8 @@ public class LatticeChangeService {
             rs.lat = alat * RADDEG;
             rs.lng = alon * RADDEG;
         }
+
         return rs;
     }
 
-
-
-    class LatXLngY
-    {
-        public double lat;
-        public double lng;
-
-        public double x;
-        public double y;
-
-    }
 }

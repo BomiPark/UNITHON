@@ -6,22 +6,19 @@ import android.view.InflateException;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
+import project.android.unithon.Model.LatXLngY;
+import project.android.unithon.R;
+import project.android.unithon.Service.LatticeChangeService;
 import project.android.unithon.Service.LocationListener;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
-
-import java.util.ArrayList;
-
-import project.android.unithon.R;
-
-/**
- * Created by qkrqh on 2017-07-29.
- */
 
 public class MapFragment extends Fragment{
 
@@ -59,8 +56,29 @@ public class MapFragment extends Fragment{
 
             LatLng baseLatlng = new LatLng(locationListener.getLocation().latitude, locationListener.getLocation().longitude);
             googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(baseLatlng, 17));
+
+            markerOptions = new MarkerOptions(); //todo 삭제해도 ㅇ 현재위치 파악
+            markerOptions.icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_launcher));
+            markerOptions.position(baseLatlng);
+            googleMap.addMarker(markerOptions);
+
+            googleMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
+                @Override
+                public void onMapClick(LatLng latLng){
+                    change(latLng);
+                }
+            });
         }
+
     };
+
+    public void change(LatLng latLng){
+
+        LatXLngY lat = new LatXLngY();
+        lat = LatticeChangeService.get().convertGRID_GPS(0, latLng.latitude, latLng.longitude);
+        Toast.makeText(getActivity(), lat.x +" 하나요" + lat.y + "둘이용 " , Toast.LENGTH_LONG).show();
+    }
+
 
 
     @Override
