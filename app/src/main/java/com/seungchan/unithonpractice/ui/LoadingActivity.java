@@ -1,9 +1,9 @@
-package project.android.unithon.Activity;
+package com.seungchan.unithonpractice.ui;
 
-import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 
-import project.android.unithon.R;
+import com.seungchan.unithonpractice.R;
 
 public class LoadingActivity extends AppCompatActivity {
     private static String TAG = "LoadingActivity";

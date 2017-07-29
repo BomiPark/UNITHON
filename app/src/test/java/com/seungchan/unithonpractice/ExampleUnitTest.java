@@ -1,4 +1,4 @@
-package project.android.unithon;
+package com.seungchan.unithonpractice;
 
 import org.junit.Test;
 

@@ -1,4 +1,4 @@
-package project.android.unithon.Fragment;
+package com.seungchan.unithonpractice.ui;
 
 import android.content.Context;
 import android.net.Uri;
@@ -8,17 +8,21 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import project.android.unithon.R;
+import com.seungchan.unithonpractice.R;
 
-public class CameraFragment extends Fragment {
-    private static String TAG = "CameraFragment";
+/*
+    6개의 날씨 아이콘을 선택할 수 있는 Fragment
+    아이콘 선택시
+ */
+public class IconSelectFragment extends Fragment {
+    private static String TAG = "IconSelectFragment";
 
     private OnFragmentInteractionListener mListener;
 
-    public CameraFragment() { }
+    public IconSelectFragment() { }
 
-    public static CameraFragment newInstance() {
-        CameraFragment fragment = new CameraFragment();
+    public static IconSelectFragment newInstance() {
+        IconSelectFragment fragment = new IconSelectFragment();
         return fragment;
     }
 
@@ -28,8 +32,10 @@ public class CameraFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_camera, container, false);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.fragment_icon_select, container, false);
     }
 
     public void onButtonPressed(Uri uri) {

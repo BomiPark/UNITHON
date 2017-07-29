@@ -1,4 +1,4 @@
-package project.android.unithon.Fragment;
+package com.seungchan.unithonpractice.ui;
 
 import android.content.Context;
 import android.net.Uri;
@@ -8,44 +8,30 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import project.android.unithon.R;
+import com.seungchan.unithonpractice.R;
 
-public class NationalWeatherFragment extends Fragment {
-    private static String TAG = "NationalWeatherFragment";
-
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    private String mParam1;
-    private String mParam2;
+public class OpinionFragment extends Fragment {
+    private static String TAG = "OpinionFragment";
 
     private OnFragmentInteractionListener mListener;
 
-    public NationalWeatherFragment() { }
+    public OpinionFragment() { }
 
-    public static NationalWeatherFragment newInstance(String param1, String param2) {
-        NationalWeatherFragment fragment = new NationalWeatherFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
+    public static OpinionFragment newInstance() {
+        OpinionFragment fragment = new OpinionFragment();
         return fragment;
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_national_weather, container, false);
+        return inflater.inflate(R.layout.fragment_opinion, container, false);
     }
 
     public void onButtonPressed(Uri uri) {
@@ -74,5 +60,4 @@ public class NationalWeatherFragment extends Fragment {
     public interface OnFragmentInteractionListener {
         void onFragmentInteraction(Uri uri);
     }
-
 }
