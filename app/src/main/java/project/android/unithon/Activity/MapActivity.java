@@ -22,7 +22,7 @@ public class MapActivity extends AppCompatActivity {
         container = (FrameLayout)findViewById(R.id.container);
 
         fragmentManager = getSupportFragmentManager();
-        getSupportFragmentManager().beginTransaction().replace(R.id.container, new MapFragment()).addToBackStack(null).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.container, new MapFragment()).commit();
 
     }
 
