@@ -50,7 +50,7 @@ public class MapFragment extends Fragment{
             googleMap = map;
 
             LatLng baseLatlng = new LatLng(locationListener.getLocation().latitude, locationListener.getLocation().longitude);
-            googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(baseLatlng, 17));
+            googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(baseLatlng, 12));
 
             markerOptions = new MarkerOptions(); //todo 삭제해도 ㅇ 현재위치 파악
             markerOptions.icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_launcher));
@@ -59,7 +59,7 @@ public class MapFragment extends Fragment{
 
             googleMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
                 @Override
-                public void onMapClick(LatLng latLng){
+                public void onMapClick(LatLng latLng){ //todo 좌표 변환 test
                     change(latLng);
                 }
             });
