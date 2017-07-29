@@ -1,4 +1,4 @@
-package project.android.unithon.Fragment;
+package com.seungchan.unithonpractice.ui;
 
 import android.content.Context;
 import android.net.Uri;
@@ -8,34 +8,44 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import project.android.unithon.R;
+import com.seungchan.unithonpractice.R;
 
-/*
-    6개의 날씨 아이콘을 선택할 수 있는 Fragment
-    아이콘 선택시
- */
-public class IconSelectFragment extends Fragment {
-    private static String TAG = "IconSelectFragment";
+public class NationalWeatherFragment extends Fragment {
+    private static String TAG = "NationalWeatherFragment";
+
+    private static final String ARG_PARAM1 = "param1";
+    private static final String ARG_PARAM2 = "param2";
+
+    private String mParam1;
+    private String mParam2;
 
     private OnFragmentInteractionListener mListener;
 
-    public IconSelectFragment() { }
+    public NationalWeatherFragment() { }
 
-    public static IconSelectFragment newInstance() {
-        IconSelectFragment fragment = new IconSelectFragment();
+    public static NationalWeatherFragment newInstance(String param1, String param2) {
+        NationalWeatherFragment fragment = new NationalWeatherFragment();
+        Bundle args = new Bundle();
+        args.putString(ARG_PARAM1, param1);
+        args.putString(ARG_PARAM2, param2);
+        fragment.setArguments(args);
         return fragment;
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (getArguments() != null) {
+            mParam1 = getArguments().getString(ARG_PARAM1);
+            mParam2 = getArguments().getString(ARG_PARAM2);
+        }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_icon_select, container, false);
+        return inflater.inflate(R.layout.fragment_national_weather, container, false);
     }
 
     public void onButtonPressed(Uri uri) {
@@ -64,4 +74,5 @@ public class IconSelectFragment extends Fragment {
     public interface OnFragmentInteractionListener {
         void onFragmentInteraction(Uri uri);
     }
+
 }

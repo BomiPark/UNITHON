@@ -1,9 +1,10 @@
-package project.android.unithon.api;
+package com.seungchan.unithonpractice.api;
 
 import android.app.Application;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.tsengvn.typekit.Typekit;
 
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;

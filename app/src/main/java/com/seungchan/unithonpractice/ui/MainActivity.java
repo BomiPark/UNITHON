@@ -1,30 +1,30 @@
-package project.android.unithon.Activity;
+package com.seungchan.unithonpractice.ui;
 
 import android.net.Uri;
-import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+
+
+import com.seungchan.unithonpractice.R;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import project.android.unithon.Fragment.CameraFragment;
-import project.android.unithon.Fragment.OpinionFragment;
-import project.android.unithon.Fragment.IconSelectFragment;
-import project.android.unithon.Fragment.NationalWeatherFragment;
-import project.android.unithon.R;
 
 public class MainActivity extends AppCompatActivity implements NationalWeatherFragment.OnFragmentInteractionListener, CameraFragment.OnFragmentInteractionListener
     , IconSelectFragment.OnFragmentInteractionListener, OpinionFragment.OnFragmentInteractionListener{
     private static String TAG = "MainActivity";
 
     private Boolean isFabOpened = false;
+
     @BindView(R.id.fab_main)
     FloatingActionButton fabMain;
     @BindView(R.id.fab_call_camera_fragment)
@@ -48,10 +48,11 @@ public class MainActivity extends AppCompatActivity implements NationalWeatherFr
         fab_close = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fab_close);
         rotate_forward = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.rotate_forward);
         rotate_backward = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.rotate_backward);
+
     }
 
     @OnClick(R.id.fab_main) void onClickFabFloatingButton(){
-        Log.d(TAG, "onClickFabFloatingButton()");
+        Log.d(TAG, "onClickFabFloatingButton() 메인 플로팅 버튼 이벤트 발생");
         animateFabOpening();
     }
 
@@ -85,7 +86,6 @@ public class MainActivity extends AppCompatActivity implements NationalWeatherFr
     }
 
     public void animateFabOpening() {
-        Log.d(TAG, "animateFabOpenins()");
 
         if (isFabOpened) {
 

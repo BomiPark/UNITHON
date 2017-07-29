@@ -1,4 +1,4 @@
-package project.android.unithon.Fragment;
+package com.seungchan.unithonpractice.ui;
 
 import android.content.Context;
 import android.net.Uri;
@@ -8,17 +8,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import project.android.unithon.R;
+import com.seungchan.unithonpractice.R;
 
-public class OpinionFragment extends Fragment {
-    private static String TAG = "OpinionFragment";
+public class CameraFragment extends Fragment {
+    private static String TAG = "CameraFragment";
 
     private OnFragmentInteractionListener mListener;
 
-    public OpinionFragment() { }
+    public CameraFragment() { }
 
-    public static OpinionFragment newInstance() {
-        OpinionFragment fragment = new OpinionFragment();
+    public static CameraFragment newInstance() {
+        CameraFragment fragment = new CameraFragment();
         return fragment;
     }
 
@@ -28,10 +28,11 @@ public class OpinionFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_opinion, container, false);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View cameraFragmentView = inflater.inflate(R.layout.fragment_camera, container, false);
+
+
+        return cameraFragmentView;
     }
 
     public void onButtonPressed(Uri uri) {
