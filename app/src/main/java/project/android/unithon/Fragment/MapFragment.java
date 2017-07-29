@@ -49,11 +49,6 @@ public class MapFragment extends Fragment{
 
             googleMap = map;
 
-            /*
-            UiSettings settings = googleMap.getUiSettings(); //todo 줌버튼 아직 미정
-            settings.setZoomControlsEnabled(true);
-             */
-
             LatLng baseLatlng = new LatLng(locationListener.getLocation().latitude, locationListener.getLocation().longitude);
             googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(baseLatlng, 17));
 

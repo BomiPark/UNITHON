@@ -1,4 +1,4 @@
-package project.android.unithon.Main;
+package project.android.unithon.Activity;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -9,7 +9,7 @@ import android.widget.FrameLayout;
 import project.android.unithon.Fragment.MapFragment;
 import project.android.unithon.R;
 
-public class MainActivity extends AppCompatActivity {
+public class MapActivity extends AppCompatActivity {
 
     FragmentManager fragmentManager;
     FrameLayout container;
@@ -17,7 +17,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_map);
 
         container = (FrameLayout)findViewById(R.id.container);
 
